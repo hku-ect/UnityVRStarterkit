@@ -37,4 +37,3 @@ Make sure that the OSCclient and the Rigidbody children are of the CameraRig the
 
 ## Useful Links:
 https://www.raywenderlich.com/149239/htc-vive-tutorial-unity
-P
