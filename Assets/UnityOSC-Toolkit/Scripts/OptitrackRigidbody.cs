@@ -53,14 +53,14 @@ namespace HKUECT {
 
 			if (OptiTrackOSCClient.GetRigidbody (rigidbodyName, out def)) {
 
-				Debug.Log (rigidbodyName + "is found");
-				Debug.Log (rigidbodyName+" "+def.isActive);
-				Debug.Log (rigidbodyName+" "+def.name);
+				//Debug.Log (rigidbodyName + "is found");
+				//Debug.Log (rigidbodyName+" "+def.isActive);
+				//Debug.Log (rigidbodyName+" "+def.name);
 
 				if (def.isActive) {
 					Activate ();
 
-					Debug.Log (rigidbodyName + " rgidbody is present");
+					//Debug.Log (rigidbodyName + " rgidbody is present");
 
 					if (t == null) {
 						GameObject g = GameObject.Find (prefab.name);
@@ -84,6 +84,10 @@ namespace HKUECT {
 			} else if (deactiveWhenMissing) {
 				Deactivate ();
 			} 
+		}
+
+		void OnDisable() {
+			Deactivate ();
 		}
 
 		#endregion

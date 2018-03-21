@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: calibrationData
+  m_EditorClassIdentifier: Assembly-CSharp::CalibrationData
+  isValid: 1
+  centerX: -0.00081163645
+  centerY: 0.07569623
+  centerZ: 0.0034053326
+  yRotation: 0.027976455
+  scale: 0.98019564
