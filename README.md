@@ -37,17 +37,21 @@ In order to match the VR and Motion Capture spaces, they need to be calibrated. 
     - These names can be altered, and have been set on the Calibration object, as well as the CalibrationRigidbodies objects (in the scene)
   - A running NatNet2OSCBridge which is sending the data from Motive into Unity
 
-(Automatic)
+<b>Automatic</b><br>
 To calibrate, perform the following actions:
   - Check which controller is "L" and which is "R" (only visible from the Vive headset)
-  - Put off the Vive headset
-  - Place the "right" rigidbody in the front-right (+x/+z) area of the mocap space (doesn't need to be precise, just needs to be well tracked so avoid the outer corners, 1-2 meters is fine)
-  - Place the "left" rigidbody in the rear-left (-x/-z) area of the mocap space
-  - Click the "L" controller's trigger on top of the "left" rigidbody
+  - Take off the Vive headset
+  - Place the "right" rigidbody in the front-right (+x/+z) area of the mocap space (inside the VR volume, doesn't need to be precise, just needs to be well tracked so avoid the outer mocap corners, 1-2 meters from the center is fine)
+  - Place the "left" rigidbody in the rear-left (-x/-z) area of the mocap/vr space
   - Click the "R" controller's trigger on top of the "right" rigidbody
+  - Click the "L" controller's trigger on top of the "left" rigidbody
   - (Recommended) Put the Vive headset on again, and test how well you've matched by viewing the "testObject" rigidbody, or others you've added
 
-(Manual)
+Calibration is stored and automatically re-used upon startup. Sometimes data is corrupted, or you might want to re-do calibration (good idea to do before you start), so you can "invalidate" calibration data by navigating to <i>Resources/calibrationData</i> (select it), and unchecking the checkbox that indicates this data is still valid.
+
+<b>Do not delete this calibrationData object!</b> (if you have, you can make another one by right clicking, and selecting Create -> Calibration Data, then renaming it to "calibrationData")
+
+<b>Manual</b><br>
 Make sure that the OSCclient and the Rigidbody children are of the CameraRig then correct the offset by translating the Rigidbody group relative to the CameraRig. Als make sure that the X and Z axis of the SteamVR setup are the same as the MOCAP calibration.
 
 
