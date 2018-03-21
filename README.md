@@ -32,7 +32,23 @@ This will generate a .FB file and a folder with your textures which you can then
 
 **How do I match the MOCAP space with the VR space ?**
 
-Make sure that the OSCclient and the Rigidbody children are of the CameraRig then correct tghe offset by translating the Rigidbody group relative to the CameraRig. Als make sure that the X and Z axis of the SteamVR setup are the same as the MOCAP calibration.
+In order to match the VR and Motion Capture spaces, they need to be calibrated. An example scene for this has been added (Scenes/mocap_vr). What you'll need to perform calibration (according to the setup in this scene):
+  - A Motive project, with at least two rigidbodies named "left" and "right" (a third, named "testObject" is optional)
+    - These names can be altered, and have been set on the Calibration object, as well as the CalibrationRigidbodies objects (in the scene)
+  - A running NatNet2OSCBridge which is sending the data from Motive into Unity
+
+(Automatic)
+To calibrate, perform the following actions:
+  - Check which controller is "L" and which is "R" (only visible from the Vive headset)
+  - Put off the Vive headset
+  - Place the "right" rigidbody in the front-right (+x/+z) area of the mocap space (doesn't need to be precise, just needs to be well tracked so avoid the outer corners, 1-2 meters is fine)
+  - Place the "left" rigidbody in the rear-left (-x/-z) area of the mocap space
+  - Click the "L" controller's trigger on top of the "left" rigidbody
+  - Click the "R" controller's trigger on top of the "right" rigidbody
+  - (Recommended) Put the Vive headset on again, and test how well you've matched by viewing the "testObject" rigidbody, or others you've added
+
+(Manual)
+Make sure that the OSCclient and the Rigidbody children are of the CameraRig then correct the offset by translating the Rigidbody group relative to the CameraRig. Als make sure that the X and Z axis of the SteamVR setup are the same as the MOCAP calibration.
 
 
 ## Useful Links:
