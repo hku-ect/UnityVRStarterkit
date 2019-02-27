@@ -32,7 +32,7 @@ This will generate a .FB file and a folder with your textures which you can then
 
 **How do I match the MOCAP space with the VR space ?**
 
-In order to match the VR and Motion Capture spaces, they need to be calibrated. An example scene for this has been added (Scenes/mocap_vr). What you'll need to perform calibration (according to the setup in this scene):
+In order to match the VR and Motion Capture spaces, they need to be calibrated. An example scene for this has been added (Scenes/main). What you'll need to perform calibration (according to the setup in this scene):
   - A Motive project, with at least two rigidbodies named "left" and "right" (a third, named "testObject" is optional)
     - These names can be altered, and have been set on the Calibration object, as well as the CalibrationRigidbodies objects (in the scene)
   - A running NatNet2OSCBridge which is sending the data from Motive into Unity
