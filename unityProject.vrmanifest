@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.unity_vr_starterkit.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "D:\\GIT\\hku-etc\\VRStarterKit\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Unity_VR_StarterKit [Testing]"
+        }
+      }
+    }
+  ]
+}

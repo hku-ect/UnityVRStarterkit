@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HKUECT;
+using Valve.VR;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -43,8 +45,8 @@ public class Calibration : MonoBehaviour {
 
 	void Update() {
 		VRMocapMatchPosition l, r;
-		l = VRMocapMatchPosition.Get (VRMocapMatch.LEFT);
-		r = VRMocapMatchPosition.Get (VRMocapMatch.RIGHT);
+		l = VRMocapMatchPosition.Get (SteamVR_Input_Sources.LeftHand);
+		r = VRMocapMatchPosition.Get (SteamVR_Input_Sources.RightHand);
 		if (l && r) {
 			if (l.HasValue () && r.HasValue () && !calibrated) {
 				calibrated = PerformCalibration ();
@@ -76,8 +78,8 @@ public class Calibration : MonoBehaviour {
 		}
 
 		//store our anchored calibration data (virtual positions of 
-		left = VRMocapMatchPosition.Get(VRMocapMatch.LEFT).GetPosition();
-		right = VRMocapMatchPosition.Get(VRMocapMatch.RIGHT).GetPosition();
+		left = VRMocapMatchPosition.Get(SteamVR_Input_Sources.LeftHand).GetPosition();
+		right = VRMocapMatchPosition.Get(SteamVR_Input_Sources.RightHand).GetPosition();
 
 		//store average y-offset for all anchors (gives user some leeway for error)... do we even need this?
 		yOffset += left.y - oscLeft.y;

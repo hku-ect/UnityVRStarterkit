@@ -1,23 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum VRMocapMatch
-{
-	LEFT,
-	RIGHT
-}
+using Valve.VR;
 
 public class VRMocapMatchPosition : MonoBehaviour {
 
-	static Dictionary<VRMocapMatch,VRMocapMatchPosition> matchObjects = new Dictionary<VRMocapMatch, VRMocapMatchPosition> ();
+	static Dictionary<SteamVR_Input_Sources,VRMocapMatchPosition> matchObjects = new Dictionary<SteamVR_Input_Sources, VRMocapMatchPosition> ();
 
-	public VRMocapMatch matchPos = VRMocapMatch.LEFT;
+	public SteamVR_Input_Sources matchPos = SteamVR_Input_Sources.LeftHand;
+	public SteamVR_Action_Boolean inputAction;
 
-	SteamVR_TrackedController controller;
+	//SteamVR_TrackedObject controller;
 	Vector3? storedPosition = null;
 
-	public static VRMocapMatchPosition Get( VRMocapMatch position ) {
+	public static VRMocapMatchPosition Get( SteamVR_Input_Sources position ) {
 		if (matchObjects.ContainsKey (position)) {
 			return matchObjects [position];
 		}
@@ -39,17 +35,15 @@ public class VRMocapMatchPosition : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		matchObjects.Add(matchPos,this);
-		controller = GetComponent<SteamVR_TrackedController> ();
-		if (controller) {
-			controller.TriggerClicked += TriggerClicked;
-		}
+		inputAction.onStateDown += TriggerClicked;
 	}
 	
 	void OnDestroy() {
 		matchObjects.Remove(matchPos);
 	}
 
-	void TriggerClicked( object sender, ClickedEventArgs args ) {
+	void TriggerClicked( SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource ) {
+		//Debug.Log(matchPos.ToString());
 		storedPosition = transform.position;
 	}
 }
