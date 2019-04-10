@@ -12,6 +12,7 @@ The following components are part of the Unity VR Starterkit:
 
 * [SteamVR unity plugin](https://assetstore.unity.com/packages/templates/systems/steamvr-plugin-32647)
 * [Poly plugin](https://developers.google.com/poly/develop/unity)
+  * Note: if you get an error, activate "unsafe" code in Edit -> ProjectSettings -> Player -> Other Settings
 * [Unity OSC toolkit](https://github.com/hku-ect/UnityOSCToolkit)
 * [Teleportation setup](https://unity3d.college/2017/05/16/steamvr-locomotion-teleportation-movement/)
 
@@ -30,7 +31,31 @@ This will generate a .FB file and a folder with your textures which you can then
 
 # FAQ
 
+**Setting Up Steam Input for Mocap VR Calibration**
+Note: You'll need to have a Vive connected for this to work.
+
+* Open Window -> Steam Input
+ * Make sure two events exist, or create them if they don't:
+  1. ClickTriggerLeft
+  2. ClickTriggerRight
+  Both: Boolean, suggested (should be the default setup)
+ * At the top of this list, make sure the mode is set to "per hand" instead of "mirrored" (which is the default)
+ * Click "Save & Generate", and wait for it to complete
+ * Click the button to the right "Open Binding UI"
+ * Click "Edit" on the active binding
+ * Navigate to the "Trigger Click" on both controllers (left and right), and:
+  1. Click the edit icon
+  2. Select the ClickTriggerLeft action for the left controller
+  3. Select the ClickTriggerRight action for the right controller
+
+* Open the "main" scene
+ * Navigate to the CameraRig, and select the Controllers
+ * Set the Input Action of the "LeftHand" controller to the ClickTriggerLeft event
+ * Set the Input Action of the "RightHand" controller to the ClickTriggerRight event
+
 **How do I match the MOCAP space with the VR space ?**
+
+Note: Make sure you have the correct Steam Input setup before attempting to calibrate!
 
 In order to match the VR and Motion Capture spaces, they need to be calibrated. An example scene for this has been added (Scenes/main). What you'll need to perform calibration (according to the setup in this scene):
   - A Motive project, with at least two rigidbodies named "left" and "right" (a third, named "testObject" is optional)
