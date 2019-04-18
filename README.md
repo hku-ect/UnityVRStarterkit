@@ -1,3 +1,28 @@
+# NEW: Experimental Package Manager support for Unity 2018.3 and higher
+You can now install this using the built-in package manager. You only need to perform the following steps (you need to repeat these steps each time you create a new project):
+  * Create your project
+  * Find the Packages/Manifest.json file in the root folder of your project
+  * Add the scopedRegistry section to the bottom of the manifest (dont forget the , after the dependencies }) 
+<pre>
+ {
+  "dependencies": {
+    ...
+  }<font color="green">,
+  "scopedRegistries": [
+    {
+      "name": "HKUECT",
+      "url": "http://37.97.171.71:4873/",
+      "scopes": [
+        "nl.hku"
+      ]
+    }
+  ]</font>
+}
+</pre>
+  * Restart Unity, and open the Window -> Package Manager
+  * You will need to select "display preview packages" for this package
+    * Note: Google Poly has currently not been packaged with the package-manager version, so must be downloaded manually
+
 # UnityVRStarterKit
 
 The Unity VR Starter kit is a empty Unity project already prepared with a number of components to start developing with Unity for VR using the HTC Vive and optionally Optitrack MOCAP system. With this Unity project you can:
